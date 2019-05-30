@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
   end
 
   def new
-    
+    @blog = Blog.new
   end
 
   def destroy
@@ -21,7 +21,9 @@ class BlogsController < ApplicationController
   end
 
   def create
-    Blog.create(text: params[:text])
+    Blog.create(create_params)
+    redirect_to action: :index
+    binding.pry
   end
 
   def update
@@ -31,8 +33,14 @@ class BlogsController < ApplicationController
     end
   end
 
+  private
+  def create_params
+    params.require(:blog).permit(:text)
+  end
+
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
+
 
 end

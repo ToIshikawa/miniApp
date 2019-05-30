@@ -12,8 +12,10 @@
         </div>
         <% if user_signed_in? && current_user.id == blog.user_id %>
           <div class="botton">
-            <%= link_to 'edit', "/blogs/#{blog.id}/edit", method: :get %>
-            <%= link_to 'delete', "/blogs/#{blog.id}", method: :delete %>
+            <%= link_to 'edit', "/blogs/#{blog.id}/edit", method: :get,:style=>"color:black;" %>
+          </div>
+          <div class="botton">
+          <%= link_to 'delete', "/blogs/#{blog.id}", method: :delete,:style=>"color:black;" %>
           </div>
         <% end %>
       </div>
