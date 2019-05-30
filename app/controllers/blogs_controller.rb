@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   before_action :move_to_index, except: :index
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.order('created_at DESC')
   end
 
   def new
