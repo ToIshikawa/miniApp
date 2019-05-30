@@ -1,0 +1,6 @@
+ <div class="back">
+        <%= form_with model: Blog, method: :patch do |form| %>
+        <textarea><%= @blog.text %></textarea>
+        <%= form.submit value="SENT" %>
+      <% end %>
+    </div>

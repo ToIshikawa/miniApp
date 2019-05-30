@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MiniApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+    <li class="title"><a href= "/" >mini app</a></li>
+    <% if user_signed_in? %>
+      <li class="right" ><a href="http://localhost:3000/blogs/new" style="">new</a></li>
+      <li class="right">
+       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li class="right" > 
+        <%= link_to "login", new_user_session_path, class: 'post' %>
+      </li>
+      <li class="right" > 
+        <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+      </li>
+    <% end %>
+    </header>
+    <%= yield %>
+  </body>
+</html>

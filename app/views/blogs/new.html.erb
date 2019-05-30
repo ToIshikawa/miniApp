@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="new.css">
+  </head>
+  <body>
+    <div class="back">
+        <%= form_with model: Blog, method: :post do |form| %>
+        <%= form.text_area :text %>
+        <%= form.submit value="SENT" %>
+      <% end %>
+    </div>
+  </body>
+</html>

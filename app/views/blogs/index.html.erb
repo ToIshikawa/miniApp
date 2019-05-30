@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="index.css">
+  </head>
+  <body>
+  <% @blogs.each do |blog| %>
+    <div class="row">
+      <div class="comment">
+        <div class="comment-text">
+        <%= blog.text %>
+        </div>
+        <% if user_signed_in? && current_user.id == blog.user_id %>
+          <div class="botton">
+            <%= link_to 'edit', "/blogs/#{blog.id}/edit", method: :get %>
+            <%= link_to 'delete', "/blogs/#{blog.id}", method: :delete %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  </body>
+
+</html>
