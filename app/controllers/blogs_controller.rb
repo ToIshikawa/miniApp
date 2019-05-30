@@ -22,20 +22,19 @@ class BlogsController < ApplicationController
 
   def create
     Blog.create(create_params)
-    redirect_to action: :index
-    binding.pry
+      redirect_to action: :index
   end
 
   def update
     blog = Blog.find(params[:id])
     if blog.user_id == current_user.id
-      blog.update(text: params[:text])
+      blog.update(create_params)
     end
+    redirect_to action: :index
   end
 
-  private
   def create_params
-    params.require(:blog).permit(:text)
+    params.require(:blog).permit(:text).merge(user_id: current_user.id)
   end
 
   def move_to_index

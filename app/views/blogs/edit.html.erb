@@ -1,6 +1,6 @@
  <div class="back">
-        <%= form_with model: Blog, method: :patch do |form| %>
-        <textarea><%= @blog.text %></textarea>
-        <%= form.submit value="SENT" %>
+        <%= form_for @blog do |f| %>
+        <%= f.text_area :text %>
+        <%= f.submit value="SENT" %>
       <% end %>
     </div>
